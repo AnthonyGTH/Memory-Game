@@ -1,0 +1,9 @@
+<div class="gameHead">
+
+  <strong class="tries">Intentos: {{attempts}}</strong> |
+  <strong class="tries" style="color: #ff3535"> {{min}} : {{sec}}</strong>
+  <button ion-button (click)="restartGame()" color="danger" *ngIf="(min||sec)"
+    style="padding: 5px; margin: 0; height: fit-content; border-radius: 5px" size="small">
+    <ion-icon name="close"></ion-icon>
+  </button>
+</div>

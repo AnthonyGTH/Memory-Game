@@ -1,0 +1,45 @@
+<ion-content padding>
+  <div id="contentArea" style="text-align: center;">
+    <gameheader></gameheader>
+    <div *ngIf="min||sec">
+      <card *ngFor="let card of cardList" [card]="card"></card>
+    </div>
+    <div *ngIf="!(((min||sec)||arreglo)&&afterGame)">
+      <br>
+      <br>
+      <h4>Bienvenido al <b>memorama</b> contra tiempo!</h4>
+      <p>Logra descubrir los 9 pares en menos de <b>un minuto</b> para <b style="color: #3fbf3f">ganar</b> </p>
+
+      <button ion-button (click)="initGame()" *ngIf="!(min||sec)">
+        Jugar
+      </button>
+    </div>
+
+    <div *ngIf="arreglo">
+      <br><br>
+      <div *ngIf="arreglo.doneCards==9">
+        <p>Genial, lo lograste en:</p>
+        <h2><b>{{(60-arreglo.time.sec)}}</b> segundos</h2>
+        <hr>
+        <h4>Hiciste los <b style="color: #3fbf3f">{{(arreglo.doneCards)}}</b> pares</h4>
+        <h4>Intentaste <b style="color: #ff3535">{{(arreglo.attempts)}}</b> veces</h4>
+      </div>
+      <div *ngIf="arreglo.doneCards!=9">
+        <p>Haz perdido :c</p>
+        <p>Intentalo de nuevo, demuestra que puedes!</p>
+        <hr>
+        <h4>Hiciste <b style="color: #3fbf3f">{{(arreglo.doneCards)}}</b> par/pares</h4>
+        <h4>Intentaste <b style="color: #ff3535">{{(arreglo.attempts)}}</b> ves/veces</h4>
+      </div>
+      <button ion-button (click)="initGameAfter()">
+        Jugar de nuevo
+      </button>
+      <button ion-button (click)="home()">
+        Inicio
+      </button>
+
+
+    </div>
+
+  </div>
+</ion-content>
